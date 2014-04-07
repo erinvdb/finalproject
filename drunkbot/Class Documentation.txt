@@ -1,0 +1,30 @@
+Class Documentation
+
+DictSkipList
+- uses ConcurrentSkipListMap<K,V> to store entries into list
+- uses HashTable<K,V> collisions to store collisions in DictSkipList
+
+- put(K k, V v)
+-- input data into list (key, value)
+
+- getAll(K k)
+-- get Iterator of all values related to key k
+
+
+
+inputParser
+- uses opennlp to parse input
+- must have POSModel from external file
+
+- hasVerbNoun(String s)
+-- returns true if s contains both a verb and a noun
+
+- getVerbNoun(String str)
+-- returns an array of verb and noun in the form [verb, noun]
+
+- removePunct(String str)
+-- removes punctuation from str
+
+main
+- the functions in the main will be moved to another driver class
+

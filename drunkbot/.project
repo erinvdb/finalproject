@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>drunkbot</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.jdt.core.javabuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.jdt.core.javanature</nature>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>src/DictSkipList.java</name>
+			<type>1</type>
+			<locationURI>PROJECT_LOC/src/DictSkipList.java</locationURI>
+		</link>
+		<link>
+			<name>src/HashTable.java</name>
+			<type>1</type>
+			<locationURI>PROJECT_LOC/src/HashTable.java</locationURI>
+		</link>
+		<link>
+			<name>src/Map.java</name>
+			<type>1</type>
+			<locationURI>PROJECT_LOC/src/Map.java</locationURI>
+		</link>
+	</linkedResources>
+</projectDescription>

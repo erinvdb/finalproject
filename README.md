@@ -23,6 +23,67 @@ Implementation of Google Translate API:
 
 Finally for my last API I implemented google translate. This API when there is no dictionary.txt file match to the input. A Spanish response is established when a string with no noun is inputted, Latin is iterated back when no verb or noun is detected in the string input. And lastly Drunkbot responds in French as a random response to a string that does not fit any of the gramatical criteria for the other responses. When Drunkbot responds in another language he mimics what you said in English with either French, Spanish or Latin. This API implementation is a very useful and fun response for inputs in which the bot does not recongize the sentence structure or if the input does not match any canned responses listed in the dictionary.txt file. 
 
+Sample Code Supporting Implemented APIs:
+----------------------------------------
+
+To talk to Drunkbot enter his valid user Facebook timeline ID (durkin.bob): 
+durkin.bob
+
+User: 
+Durkin
+Bob
+
+Gender: 
+male
+
+Facebook ID: 
+100008151724836
+
+Your chat has begun!
+
+Heyyy, how you doin'?
+good, you?
+good. wanna drink?
+
+no its ok i'm not thirsty yet
+no está bien que todavía no tengo sed
+I don't understand you...So I spoke Spanish instead
+
+haha
+why are you laughing?
+
+i'm thirsty
+say "yes" for recipes
+
+yes
+Lovellyyy here are my recipes fromy my dropbox
+
+1. Copy this URL into your browser: 
+
+https://www.dropbox.com/1/oauth2/authorize?locale=en_US&client_id=xscrhfjtserjazg&response_type=code
+
+2. Then click "Allow"....you might have to log in first
+3. Copy the authorization code.
+4. Then paste it below:
+w4xz4ZiduUoAAAAAAAANV_X-6aRvusd5BCKxS2xKfvE
+Account: Erin van den Brink
+Dropbox has been accessed: File("/Recipes.docx", iconName="page_white_word", mightHaveThumbnail=false, numBytes=65267, humanSize="63.7 KB", lastModified="2014/04/07 04:14:35 UTC", clientMtime="2014/04/07 04:14:35 UTC", rev="34ff0ce6d43d")
+I hope you're enjoyingggg your tasty drink my friend!
+
+I sure am! Thank you
+We are talking about liquor
+
+yes we are
+We are talking about liquor
+
+i like beer
+me gusta la cerveza
+I don't understand you...So I spoke Spanish instead
+
+you're drunk!
+estás borracho !
+I don't understand you...So I spoke Spanish instead
+
 Additions for Assignment 3
 --------------------------
 * Added extra topic to agent's repertoire where the Drunkbot will give recipes for drinks depending on the type of alcohol you have

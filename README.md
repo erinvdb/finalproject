@@ -36,6 +36,13 @@ Graphs:
 
 ![alt tag](https://raw.githubusercontent.com/erinvdb/finalproject/master/graph%203.png)
 
+DFDs - Revised and Updated
+--------------------------
+
+![alt tag](https://raw.githubusercontent.com/erinvdb/finalproject/master/photo%201.JPG)
+
+![alt tag](https://raw.githubusercontent.com/erinvdb/finalproject/master/photo%202.JPG)
+
 Sample Code Supporting Implemented APIs:
 ----------------------------------------
 

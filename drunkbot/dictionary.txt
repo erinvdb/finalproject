@@ -4,6 +4,12 @@ yo
 hello
 yo
 
+ok
+say "yes" for recipes
+
+bad
+say "yes" for recipes
+
 how are you doing?
 good, you?
 
@@ -25,9 +31,6 @@ winning!
 good, you?
 Good. Wanna drink?
 
-yes
-Me too.
-
 what do you like to do?
 Pssh, like you need to ask.
 
@@ -35,7 +38,7 @@ Let's go to micro
 I love that place
 
 No
-Well then, you ain't ever caught a rabbit.
+Well then, I think you need a drinkkkk! Say "yes" for my recipes!
 
 wanna drink?
 Yes
@@ -138,5 +141,18 @@ duhhhhhh
 
 This is tasty
 I could soooooo goooo for some poutinneeee mmmm
+
+that's good
+would you like some drink recipes
+
+i'm thirsty
+say "yes" for recipes
+
+what should I drink
+respond "yes" to access my cocktail recipes
+
+i'm thirsty
+would you like some recipes?
+
 
 

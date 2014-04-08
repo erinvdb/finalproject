@@ -16,9 +16,12 @@ import javax.swing.*; //access the Jframe
 
 import com.gtranslate.Language;
 import com.gtranslate.Translator;
-
 import com.dropbox.core.*;
+
 import java.util.Locale;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 
 
 public class main {
@@ -46,47 +49,75 @@ public class main {
 
 	public static void main(String[] args) throws InvalidFormatException, IOException, DbxException {
 	
+		//before chatting with drunkbot you must enter either his or your valid user Facebook timeline ID
+		//implemented with Facebook API and use of JSON classes
+		
+		//beginning of API implementation #1 - Facebook API
+		
+		System.out.println("To talk to Drunkbot enter his valid user Facebook timeline ID (durkin.bob): ");
+		//the facebook timeline ID is last section of the url assiciated with your profile
+		//ie mine is "erin.v.brink" taken from the url --> https://www.facebook.com/erin.v.brink
+		
+		//scan's the facebook ID that you entered 
+		String fb = scan.nextLine();//comment out to not enter drunkbot's facebook id
         
-        
+		String baseUrl = "https://graph.facebook.com/";
+		
+		//or manually can be put in like
+		//String userTimeline = "durkin.bob";
+		//if this method is chosen comment out String fb and String userTimeline = fb;
+		
+		String userTimeline = fb;//comment out to not enter drunkbot's facebook id
+		String fullURL = baseUrl + userTimeline;
+		URL myURL = new URL(fullURL);
+		InputStream ist = myURL.openStream();
 
-		//INSERT FACEBOOK STUFF....
-		//Facebook fb = new Facebook() 
+		JSONTokener tok = new JSONTokener(ist);
+		JSONObject result = new JSONObject(tok);
+		
+		//prints out information associated with the facebook timeline id you provided (either drunkbots or your own)
+		
+		ist.close();
+		System.out.println("");
+		System.out.println("User: ");
+		System.out.println(result.get("first_name"));
+		System.out.println(result.get("last_name"));
+		System.out.println("");
+		System.out.println("Gender: ");
+		System.out.println(result.get("gender"));
+		System.out.println("");
+		System.out.println("Facebook ID: ");
+		System.out.println(result.get("id"));
+		System.out.println("");
+		
+		System.out.println("Your chat has begun!");
+		System.out.println("");
+	
 		
 		InputStream is = new FileInputStream( "en-pos-maxent.bin" );
 		setModel( new POSModel( is ) ); 
 		
 		//greet user
 		System.out.println("Heyyy, how you doin'?");
-		//System.out.println("Heyyyy, want to drink with me?");
 		
 		//get input
-		String input = scan.nextLine();
-		
-		Translator translate = Translator.getInstance();
-		String text = translate.translate(input, Language.ENGLISH, Language.GERMAN);
-		System.out.println(text); 
-		
-		
-		
-		//return output
-		//make dictionary of terms and update it
-		
+		String input = scan.nextLine();		
+	
+		//checks inputs with dictionary.txt file
 		dictionary = new DictSkipList<String, String>();
 		
 		fillDictionary(dictionary);
 		
 		int counter = 0;
-		while (!input.equals("exit") && counter < 28)
+		while (!input.equals("exit") && counter < 28)//exit prompts to quit chat
 		{
-			if (input.equals("Drunkbot what should I drink"))
+			
+//how to access dropbox API implementation #2
+			if(input.toLowerCase().equals("yes")) //the simple answer yes brings up a recipe file from dropbox
+				//used the keyword yes to be associated with this because drunkbot regualrily asks you if you'd 
+				//like a drink or would like to join him.
 			{
-				System.out.println("Would you like to see some recippeeesss?");
-				//dropbox recipes here....
-			}
-
-			if(input.toLowerCase().equals("yes"))
-			{
-
+//keys to access dropbox
 				final String APP_KEY = "xscrhfjtserjazg";
 				final String APP_SECRET = "sjio84vd4hdb8ag";
 
@@ -95,11 +126,18 @@ public class main {
 				DbxRequestConfig config = new DbxRequestConfig("JavaTutorial/1.0", Locale.getDefault().toString());
 				DbxWebAuthNoRedirect webAuth = new DbxWebAuthNoRedirect(config, appInfo);
 
-				// Have the user sign in and authorize your app.
+				// Instructions for accessing drunkbot
+				
 				String authorizeUrl = webAuth.start();
-				System.out.println("1. Go to: " + authorizeUrl);
-				System.out.println("2. Click \"Allow\" (you might have to log in first)");
+				System.out.println("Lovellyyy here are my recipes fromy my dropbox");
+				System.out.println("");
+				System.out.println("1. Copy this URL into your browser: ");
+				System.out.println("");
+				System.out.println(""+ authorizeUrl);
+				System.out.println("");
+				System.out.println("2. Then click \"Allow\"....you might have to log in first");
 				System.out.println("3. Copy the authorization code.");
+				System.out.println("4. Then paste it below:");
 				String code = new BufferedReader(new InputStreamReader(System.in)).readLine().trim();
 
 				// This will fail if the user enters an invalid authorization code.
@@ -108,16 +146,20 @@ public class main {
 
 				DbxClient client = new DbxClient(config, accessToken);
 
-				System.out.println("Linked account: " + client.getAccountInfo().displayName);
+				System.out.println("Account: " + client.getAccountInfo().displayName);
 
-				File inputFile = new File("recipes.doc");
-				FileInputStream inputStream = new FileInputStream(inputFile);
+				FileOutputStream outputStream = new FileOutputStream("Recipes.docx");
+				
 				try {
-					DbxEntry.File uploadedFile = client.uploadFile("/recipes.doc",
-							DbxWriteMode.add(), inputFile.length(), inputStream);
-					System.out.println("Uploaded: " + uploadedFile.toString());
+					DbxEntry.File downloadedFile = client.getFile("/Recipes.docx",
+							null, outputStream);
+					System.out.print("Dropbox has been accessed: ");
+					System.out.print(downloadedFile);
+					System.out.println("");
+					System.out.println("I hope you're enjoyingggg your tasty drink my friend!");
+					System.out.println("");
 				} finally {
-					inputStream.close();
+					outputStream.close();
 				}
 				//ends dropbox bit
 			}
@@ -127,13 +169,13 @@ public class main {
 			counter++;
 			
 		}
+		//prints if exit is inputed but user
 		System.out.println("I think it is time for me to go.\n");
 		input = scan.nextLine();
 		
 		System.out.println("Goodbye.\n*Falls off chair*");
 		
 	}
-	
 	//fill dictionary initially with predefined values
 	public static void fillDictionary(DictSkipList<String, String> dictionary) throws FileNotFoundException
 	{
@@ -227,8 +269,13 @@ public class main {
 			else if(6 == modulus){ 
 				return "We are talking about liquor";
 			}
+			
+			//API #3 - Google translate as a random response drunkbot will respond in French
 			else if(7 == modulus){ 
-				return "Stop changing the subject what do you want to drink";
+				  Translator translate = Translator.getInstance();
+					String text = translate.translate(input, Language.ENGLISH, Language.FRENCH);
+					  System.out.println(text);
+				return "Try and figure out what I said there suckkkerrr";
 			}
 			else if(8 == modulus){
 				return "One time I was drunk, do you like tequila shots?";
@@ -237,27 +284,37 @@ public class main {
 		
 		}
 	  	
+	  //API #3 Google Translate - For unknown responses drunkbot will speak either Spanish or Latin
+	  
 	  public static String noVerb(String noun, String input) {
 		  Random rand = new Random();
 		  int num = rand.nextInt(2);
-		  return "I don't understand you...";
-		  //return "I loooooove " + noun + ". I also love this scotch! Scotch is good.";
+		  Translator translate = Translator.getInstance();
+			String text = translate.translate(input, Language.ENGLISH, Language.SPANISH);
+			  System.out.println(text);
+		  return "I don't understand you...So I spoke Spanish instead"; 
 	  }
 	  public static String noNoun(String verb, String input) {
 		  Random rand = new Random();
 		  int num = rand.nextInt(2);
-		  if(0 == num)
-			  return "We are talking about liquor";
-		  else
-			  return "Oh how interestingggggg";
+		  /*Translator translate = Translator.getInstance();
+			String text = translate.translate(input, Language.ENGLISH, Language.GERMAN);
+			  System.out.println(text);*/
+		  //if(0 == num)
+			return "We are talking about liquor";
+		  //else
+			  //return "I don't understand you...So I spoke German instead";
 	  }
 	  public static String noNounVerb(String input) {
 		  Random rand = new Random();
 		  int num = rand.nextInt(2);
-		  if(0 == num) 
-			  return "Huh? What do you mean by that?";
-		  else 
-			  return "You aren't making any sense, and I have nooooooo idea what you are saying.";
+		  Translator translate = Translator.getInstance();
+			String text = translate.translate(input, Language.ENGLISH, Language.LATIN);
+			  System.out.println(text);
+		  //if(0 == num) 
+			  //return "You aren't making any sense, and I have nooooooo idea what you are saying.";
+		 // else 
+			  return "That was latin...I'm smart like that...";
 	  }
 
 

@@ -27,6 +27,9 @@ Implementation of Google Translate API:
 
 Finally for my last API I implemented google translate. This API when there is no dictionary.txt file match to the input. A Spanish response is established when a string with no noun is inputted, Latin is iterated back when no verb or noun is detected in the string input. And lastly Drunkbot responds in French as a random response to a string that does not fit any of the gramatical criteria for the other responses. When Drunkbot responds in another language he mimics what you said in English with either French, Spanish or Latin. This API implementation is a very useful and fun response for inputs in which the bot does not recongize the sentence structure or if the input does not match any canned responses listed in the dictionary.txt file. 
 
+Graphs:
+-------
+
 ![alt tag](https://raw.githubusercontent.com/erinvdb/finalproject/master/graph%201.png)
 
 ![alt tag](https://raw.githubusercontent.com/erinvdb/finalproject/master/graph%202.png)

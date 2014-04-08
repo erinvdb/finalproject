@@ -2,6 +2,7 @@ Final Project for Cosc 310 - Working with Drunkbot
 ==================================================
 
 ![alt tag](https://raw.github.com/yarko3/assignment2/master/drunkbot/Logo_small.png)
+
 New Features added in Final Project:
 ------------------------------------
 

@@ -18,10 +18,20 @@ Implementation of Dropbox API:
 
 With my chat agent I decided to implement the Dropbox API in order to share files stored in my dropbox, in my case in particular I created a document titled "Recipes.docx" where I provided a few pages of drink recipes that drunkbot could share with the other user. In order to download and open this file you must answer "yes" to any question other than the initial Facebook ID prompt. Once the input "yes" is read instructions are listed in order to access the recipes stored in a file on dropbox. First you must copy the given URL into your browswer, there you will proceed to select the allow button. Once the page loads there will be a authorization code, copy that code and paste it into the console, then press enter. It will then tell you that the file was accessed successfully! (I looked into printing the recipes document into the console but had issues with this/I didn't know if this was possible).
 
+![alt tag](https://github.com/erinvdb/finalproject/blob/master/dropbox%201.png)
+
+![alt tag](https://github.com/erinvdb/finalproject/blob/master/dropbox%202.png)
+
 Implementation of Google Translate API:
 ---------------------------------------
 
 Finally for my last API I implemented google translate. This API when there is no dictionary.txt file match to the input. A Spanish response is established when a string with no noun is inputted, Latin is iterated back when no verb or noun is detected in the string input. And lastly Drunkbot responds in French as a random response to a string that does not fit any of the gramatical criteria for the other responses. When Drunkbot responds in another language he mimics what you said in English with either French, Spanish or Latin. This API implementation is a very useful and fun response for inputs in which the bot does not recongize the sentence structure or if the input does not match any canned responses listed in the dictionary.txt file. 
+
+![alt tag](https://github.com/erinvdb/finalproject/blob/master/graph%201.png)
+
+![alt tag](https://github.com/erinvdb/finalproject/blob/master/graph%202.png)
+
+![alt tag](https://github.com/erinvdb/finalproject/blob/master/graph%203.png)
 
 Sample Code Supporting Implemented APIs:
 ----------------------------------------

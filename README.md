@@ -126,9 +126,11 @@ Future Ideas
 	* This would use your location to find a bar or liquor store closest to you
 * Implemented the use of sockets to build conversations with another agent
 
-30 turns: this dialog shows how the new features are implemented and also shows
-some limitations where grammar and spelling are not checked
+30 turns: 
 --------
+
+(this dialog shows how the new features are implemented and also shows
+some limitations where grammar and spelling are not checked)
 
 Heyyy, how you doin'?
 good, you?

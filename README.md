@@ -1,26 +1,30 @@
 Final Project for Cosc 310 - Working with Drunkbot
 ==================================================
 
+![alt tag](https://raw.github.com/yarko3/assignment2/master/drunkbot/Logo_small.png)
+
 New Features added in Final Project:
 ------------------------------------
 
-1. Implementation of Facebook API:
+Implementation of Facebook API:
+-------------------------------
 
 Chat program prompts and asks for a Facebook timeline ID before the initiation of the chat conversation. I have made a separate Drunkbot profile on Facebook that has a unique ID, I have provided the Facebook timeline ID of Drunkbot (also known as Durkin Bob. If you would like to use your own Facebook timeline ID you are able to and the instructions are listed in the code as to modify this function. If you would like to use your own ID it is the last part of your profile URL. For example, with drunkbot's Facebook profile URL: "https://www.facebook.com/durkin.bob"  you can see that the section after the back slash is used for his Facebook timeline ID. This API implemenation is an important part of the conversation between drunkbot and user because without a proper ID provided in the beginning the chat between the two agents would not be able to happen. 
 
 When you provide the Facebook timeline ID of either Drunkbot or your own you are given back your first name, last name , gender and unique Facebook ID (which is independent and different than the Facebook timeline ID). 
 
-2. Implementation of Dropbox API:
+Implementation of Dropbox API:
+------------------------------
 
 With my chat agent I decided to implement the Dropbox API in order to share files stored in my dropbox, in my case in particular I created a document titled "Recipes.docx" where I provided a few pages of drink recipes that drunkbot could share with the other user. In order to download and open this file you must answer "yes" to any question other than the initial Facebook ID prompt. Once the input "yes" is read instructions are listed in order to access the recipes stored in a file on dropbox. First you must copy the given URL into your browswer, there you will proceed to select the allow button. Once the page loads there will be a authorization code, copy that code and paste it into the console, then press enter. It will then tell you that the file was accessed successfully! (I looked into printing the recipes document into the console but had issues with this/I didn't know if this was possible).
 
-3. Implementation of Google Translate API:
+Implementation of Google Translate API:
+---------------------------------------
 
 Finally for my last API I implemented google translate. This API when there is no dictionary.txt file match to the input. A Spanish response is established when a string with no noun is inputted, Latin is iterated back when no verb or noun is detected in the string input. And lastly Drunkbot responds in French as a random response to a string that does not fit any of the gramatical criteria for the other responses. When Drunkbot responds in another language he mimics what you said in English with either French, Spanish or Latin. This API implementation is a very useful and fun response for inputs in which the bot does not recongize the sentence structure or if the input does not match any canned responses listed in the dictionary.txt file. 
 
-Final Project for COSC 310
-![alt tag](https://raw.github.com/yarko3/assignment2/master/drunkbot/Logo_small.png)
-
+Initial Documentation for Assignment 2 - First Look at Drunkbot
+---------------------------------------------------------------
 
  We have decided to implement a chatbot who is somewhat intoxicated but coherent and able to learn from user interaction. This bot will interact with the user based on pre-programmed sentence structures as dynamically generated responses based on user input through the use of natural language processing.
 

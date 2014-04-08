@@ -18,7 +18,7 @@ Implementation of Dropbox API:
 
 With my chat agent I decided to implement the Dropbox API in order to share files stored in my dropbox, in my case in particular I created a document titled "Recipes.docx" where I provided a few pages of drink recipes that drunkbot could share with the other user. In order to download and open this file you must answer "yes" to any question other than the initial Facebook ID prompt. Once the input "yes" is read instructions are listed in order to access the recipes stored in a file on dropbox. First you must copy the given URL into your browswer, there you will proceed to select the allow button. Once the page loads there will be a authorization code, copy that code and paste it into the console, then press enter. It will then tell you that the file was accessed successfully! (I looked into printing the recipes document into the console but had issues with this/I didn't know if this was possible).
 
-![alt tag](https://github.com/erinvdb/finalproject/blob/master/dropbox%201.png)
+![alt tag](https://raw.github.com/erinvdb/finalproject/blob/master/dropbox%201.png)
 
 ![alt tag](https://github.com/erinvdb/finalproject/blob/master/dropbox%202.png)
 

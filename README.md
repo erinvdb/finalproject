@@ -6,6 +6,8 @@ Final Project for Cosc 310 - Working with Drunkbot
 New Features added in Final Project:
 ------------------------------------
 
+https://github.com/erinvdb/finalproject
+
 Implementation of Facebook API:
 -------------------------------
 

@@ -1,3 +1,13 @@
+/**
+ * @Author Erin van den Brink
+ * Student ID: 48813109
+ * 
+ * @Version Final Project API implementation for Drunkbot
+ * COSC 310 
+ * 
+ */
+
+
 import java.util.*;
 import java.io.*;
 import java.awt.*;
@@ -39,24 +49,52 @@ public class main {
 	private static POSModel model;
 	
 	private static DictSkipList<String, String> dictionary;
+	/**
+	 * accesses dictionary
+	 * Next part returns dictionary
+	 * @return void
+	 */
+
 	
 	private DictSkipList<String, String> getDict()
 	{
+		/**
+		 * Accesses Dictionary File
+		 * @return returns Dictionary 
+		 */
 		return dictionary;
 	}
 
 	public static Scanner scan = new Scanner(System.in);
+	
+	/**
+	 * @see before chatting with drunkbot you must enter either his or your valid user Facebook timeline ID
+	 *  implemented with Facebook API and use of JSON classes
+	 *  
+	 *  @exception are thrown if there is an invalid Facebook timeline ID, the formatting for ID is invalid or 
+	 *  the Dropbox authorization code is invalid, or no authorization code is entered when prompted for it.
+	 *
+	 * @param args - default parameters 
+	 * @throws InvalidFormatException - does not match the format of Facebook timeline ID or Dropbox
+	 * @throws IOException
+	 * @throws DbxException
+	 */
 
 	public static void main(String[] args) throws InvalidFormatException, IOException, DbxException {
-	
-		//before chatting with drunkbot you must enter either his or your valid user Facebook timeline ID
-		//implemented with Facebook API and use of JSON classes
 		
 		//beginning of API implementation #1 - Facebook API
 		
 		System.out.println("To talk to Drunkbot enter his valid user Facebook timeline ID (durkin.bob): ");
-		//the facebook timeline ID is last section of the url assiciated with your profile
-		//ie mine is "erin.v.brink" taken from the url --> https://www.facebook.com/erin.v.brink
+		
+		/**
+		 * 
+		 * @see the facebook timeline ID is last section of the url assiciated with your profile
+		 * 
+		 * @see ie mine is "erin.v.brink" taken from the url --> https://www.facebook.com/erin.v.brink
+		 * 
+		 */
+		
+
 		
 		//scan's the facebook ID that you entered 
 		String fb = scan.nextLine();//comment out to not enter drunkbot's facebook id
@@ -139,8 +177,32 @@ public class main {
 				System.out.println("3. Copy the authorization code.");
 				System.out.println("4. Then paste it below:");
 				String code = new BufferedReader(new InputStreamReader(System.in)).readLine().trim();
+				
+				/**
+				 * 
+				 * Beginning of Dropbox API implementation
+				 * Asks for keyword "yes" to begin 
+				 * Gives you a URL to copy and pase into your browser
+				 * 
+				 * @returns a URL to access and copy the authorization code
+				 * 
+				 * @link of authorizeURL example: https://www.dropbox.com/1/oauth2/authorize?locale=en_US&client_id=xscrhfjtserjazg&response_type=code
+				 * 
+				 * @return example authorization code: w4xz4ZiduUoAAAAAAAANWdLteHnhWeYhf5nViVNpxAI
+				 * 
+				 */
 
 				// This will fail if the user enters an invalid authorization code.
+				
+				/**
+				 * 
+				 * Access Recipes.docx at:
+				 * 
+				 * @return https://www.dropbox.com/s/7sf88nzj1ytun1n/Recipes.docx
+				 * 
+				 * 
+				 */
+				
 				DbxAuthFinish authFinish = webAuth.finish(code);
 				String accessToken = authFinish.accessToken;
 
@@ -156,6 +218,8 @@ public class main {
 					System.out.print("Dropbox has been accessed: ");
 					System.out.print(downloadedFile);
 					System.out.println("");
+					System.out.println("Copy this URL into your browser: ");
+					System.out.println("https://www.dropbox.com/s/7sf88nzj1ytun1n/Recipes.docx");
 					System.out.println("I hope you're enjoyingggg your tasty drink my friend!");
 					System.out.println("");
 				} finally {
@@ -177,7 +241,28 @@ public class main {
 		
 	}
 	//fill dictionary initially with predefined values
+	
+	/**
+	 * 
+	 * 
+	 * @param dictionary - refers to the dictionary file which houses known responses to inputs from the user
+	 * @throws FileNotFoundException - if the dictionary file cannot be found this exception is thrown causing an error and causing the program to quit
+	 */
+	
 	public static void fillDictionary(DictSkipList<String, String> dictionary) throws FileNotFoundException
+	
+	/**
+	 * 
+	 * Fills Dictionary with input from user
+	 * 
+	 * @exception FileNotFound
+	 * 
+	 * @throws File Not Found Exception
+	 * 
+	 * if the dictionary.txt file does not exist then it cannot write user input to file
+	 * 
+	 * 
+	 */
 	{
 		FileInputStream in = new FileInputStream("dictionary.txt");
 		Scanner fin = new Scanner(in);
@@ -204,12 +289,25 @@ public class main {
 	  private static POSModel getModel() {
 		    return model;
 	  }
-	  
+	  /**
+	   * 
+	   * @param str - takes in a string 
+	   * 
+	   */
 		public void addText(String str){
 			dialog.setText(dialog.getText() +str);
 	}
 	  
 	  //generate chatbot response
+		/**
+		 * 
+		 * 
+		 * @param input - inputs string from user
+		 * @return
+		 * @throws InvalidFormatException - if the string is not a valid format exception will be thrown and program exited with error
+		 * @throws IOException
+		 */
+		
 	  public static String response(String input) throws InvalidFormatException, IOException
 	  {
 		  
@@ -229,6 +327,17 @@ public class main {
 	  }
 	  
 	  //construct response sentence
+	  
+	  /**
+	   * Builds string responses as how the Drunkbot responds
+	   * 
+	   * 
+	   * @param verb - detected verb from input of user
+	   * @param noun - detected noun from input of user
+	   * @param input - full string input from user
+	   * @return a sentence or response dependent on presence or verbs or nouns. Responses are sometimes also randomly weight dependent
+	   * in that case depending on the weight they fall into the specific modulus where a sentence is constructed with their verb or noun inputed
+	   */
 	  public static String construct(String verb, String noun, String input) {
 			Random rand = new Random();
 			int weight_max = 1000;
@@ -286,6 +395,13 @@ public class main {
 	  	
 	  //API #3 Google Translate - For unknown responses drunkbot will speak either Spanish or Latin
 	  
+	  /**
+	   * 
+	   * @param noun - Finds noun from input if detects a noun without a verb then Drunkbot responds in Spanish
+	   * @param input - full string input from user
+	   * @return returns a response in Spanish - mimics/copies the user input but delivered back in Spanish
+	   */
+	  
 	  public static String noVerb(String noun, String input) {
 		  Random rand = new Random();
 		  int num = rand.nextInt(2);
@@ -294,6 +410,14 @@ public class main {
 			  System.out.println(text);
 		  return "I don't understand you...So I spoke Spanish instead"; 
 	  }
+	  
+	  /**
+	   * 
+	   * @param verb - detects verb from input
+	   * @param input - full string input from user
+	   * @return returns default answers of "We are talking about liquor" default answer implementation from 
+	   * assignment 3 where we were instructed to implement responses to keep the conversation on track
+	   */
 	  public static String noNoun(String verb, String input) {
 		  Random rand = new Random();
 		  int num = rand.nextInt(2);
@@ -305,6 +429,12 @@ public class main {
 		  //else
 			  //return "I don't understand you...So I spoke German instead";
 	  }
+	  
+	  /**
+	   * 
+	   * @param input - no verb or noun is detected, takes in string input from user
+	   * @return returns answer in Latin - mimics or reads back user input translated into Latin
+	   */
 	  public static String noNounVerb(String input) {
 		  Random rand = new Random();
 		  int num = rand.nextInt(2);
